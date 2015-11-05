@@ -18,7 +18,7 @@ POS = ["lat","lon"]
 
 expected = ["St", "St.", "Ave", "Rd","Rd.","Dr","Dr.","Pkwy"]
 
-# UPDATE THIS VARIABLE
+# Abbreviated street name to corrected street name
 mapping = { "St": "Street",
             "St.": "Street",
             "Ave":"Avenue",
@@ -29,6 +29,7 @@ mapping = { "St": "Street",
             "Pkwy":"Parkway"
             }
 
+#zip code changes for Santa Ana city
 zipmapping = {"Goetz Avenue":"92707",
                 "South Oak Street": "92707",
                 "Orange Avenue":"92707",

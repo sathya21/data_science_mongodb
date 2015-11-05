@@ -161,6 +161,7 @@ def process_map(file_in, pretty = False):
                     fo.write(json.dumps(el) + "\n")
                     db.osmclean.insert(el)
                     count = count + 1
+                    #check if correctly inserting into mongodb by peridically checking from the db
                     if (count % 10000) == 0:
                         print count
                         print db.osmclean.find_one({"id": el['id']})
@@ -172,19 +173,13 @@ def process_map(file_in, pretty = False):
     return data
 
 def get_db():
-    # For local use
     from pymongo import MongoClient
     client = MongoClient('127.0.0.1:27017')
-    # 'examples' here is the database name. It will be created if it does not exist.
     db = client.osm
     return db
 
 def test():
-    # NOTE: if you are running this code on your computer, with a larger dataset,
-    # call the process_map procedure with pretty=False. The pretty=True option adds
-    # additional spaces to the output, making it significantly larger.
     data = process_map('orange.osm', False)
-    #pprint.pprint(data)
 
 
 if __name__ == "__main__":
